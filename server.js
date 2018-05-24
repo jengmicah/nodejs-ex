@@ -97,7 +97,7 @@ app.get('/pagecount', function (req, res) {
 var exec = require('child_process').execFile;
 var fun = function() {
 	console.log("fun() start");
-	exec('../magic_test', function(err, data) {
+	exec('magic_test', function(err, data) {
 		if(err) res.render('index.html', { htmlInput : "ERROR" });
 		res.render('index.html', { htmlInput : data.toString() });
 	});
