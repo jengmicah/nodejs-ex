@@ -95,9 +95,9 @@ app.get('/pagecount', function (req, res) {
 var exec = require('child_process').exec;
 
 app.get('/exec', function (req, res) {
-	exec('pwd', function callback(err, stdout, stderr) {
+	exec('./magic_test', function callback(err, stdout, stderr) {
 		if (err) res.send('{ dataOutput: ' + err + ' wefwef}');
-		else res.send('{ dataOutpufwefwet: ' + stdout + '}');
+		else res.send('{ dataOutput: ' + stdout + '}');
 	});
 });
 
