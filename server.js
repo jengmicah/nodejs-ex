@@ -73,7 +73,7 @@ app.get('/', function (req, res) {
       res.render('index.html', { pageCountMessage : count, dbInfo: dbDetails });
     });
   } else {
-    res.render('index.html', { pageCountMessage : null});
+    res.render('index.html', { pageCountMessage : null });
   }
 });
 
@@ -91,6 +91,20 @@ app.get('/pagecount', function (req, res) {
     res.send('{ pageCount: -1 }');
   }
 });
+
+///////////////////////////
+
+var exec = require('child_process').execFile;
+var fun = function() {
+	console.log("fun() start");
+	exec('../magic_test', function(err, data) {
+		if(err) res.render('index.html', { htmlInput : "ERROR" });
+		res.render('index.html', { htmlInput : data.toString() });
+	});
+}
+fun();
+
+///////////////////////////
 
 // error handling
 app.use(function(err, req, res, next){
