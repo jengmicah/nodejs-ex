@@ -96,7 +96,7 @@ var exec = require('child_process').exec;
 
 app.get('/exec', function (req, res) {
 	var result = '';
-	var child = exec('magic_test.exe');
+	var child = exec('magic_test');
 	child.stdout.on('data', function(data) {
 		result += data;
 	});
