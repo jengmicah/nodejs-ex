@@ -96,8 +96,8 @@ var exec = require('child_process').exec;
 
 app.get('/exec', function (req, res) {
 	exec('pwd', function callback(err, stdout, stderr) {
-		if (err) res.send('{ dataOutputwefwef: ' + err + ' wefwef}');
-		else res.send('{ dataOutput: ' + stdout + '}');
+		if (err) res.send('{ dataOutput: ' + err + ' wefwef}');
+		else res.send('{ dataOutpufwefwet: ' + stdout + '}');
 	});
 });
 
