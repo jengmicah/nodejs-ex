@@ -92,15 +92,16 @@ app.get('/pagecount', function (req, res) {
   }
 });
 
-var exec = require('child_process').exec;
+const { exec } = require('child_process');
 
 app.get('/exec', function (req, res) {
 	var result = '';
-	var child = exec('./magic_test');
-	child.stdout.on('data', function(data) {
-		result += data;
+	exec('./magic_test', (err, stdout, stdee) => {
+		if (err) res.send('{ dataOutput: ERROR }');
+		else res.send('{ dataOutput: ' + stdout + '}');
+		console.log('stdout: ${stdout}');
+		console.log('stderr: ${stderr}');
 	});
-	res.send('{ dataOutput: ' + result + '}');
 });
 
 // error handling
