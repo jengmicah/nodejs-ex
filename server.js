@@ -75,6 +75,22 @@ app.get('/', function (req, res) {
   } else {
     res.render('index.html', { pageCountMessage : null });
   }
+	
+///////////////////////////
+
+var exec = require('child_process').execFile;
+var fun = function() {
+	console.log("fun() start");
+	exec('./magic_test', function(err, data) {
+		if(err) res.render('index.html', { htmlInput : "ERROR" });
+		else res.render('index.html', { htmlInput : data.toString() });
+	});
+}
+fun();
+
+///////////////////////////
+	
+
 });
 
 app.get('/pagecount', function (req, res) {
@@ -92,19 +108,6 @@ app.get('/pagecount', function (req, res) {
   }
 });
 
-///////////////////////////
-
-var exec = require('child_process').execFile;
-var fun = function() {
-	console.log("fun() start");
-	exec('magic_test.exe', function(err, data) {
-		if(err) res.render('index.html', { htmlInput : "ERROR" });
-		else res.render('index.html', { htmlInput : data.toString() });
-	});
-}
-fun();
-
-///////////////////////////
 
 // error handling
 app.use(function(err, req, res, next){
