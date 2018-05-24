@@ -81,10 +81,10 @@ app.get('/', function (req, res) {
 var exec = require('child_process').execFile;
 var fun = function() {
 	console.log("fun() start");
-	exec('./magic_test', function(err, data) {
-		if(err) res.render('index.html', { htmlInput : "ERROR" });
-		else res.render('index.html', { htmlInput : data.toString() });
-	});
+	//exec('magic_test.exe', function(err, data) {
+	//	if(err) res.render('index.html', { htmlInput : "ERROR" });
+		res.render('index.html', { htmlInput : "WEFWE" });
+	//});
 }
 fun();
 
