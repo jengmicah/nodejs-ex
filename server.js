@@ -99,7 +99,7 @@ var fun = function() {
 	console.log("fun() start");
 	exec('magic_test.exe', function(err, data) {
 		if(err) res.render('index.html', { htmlInput : "ERROR" });
-		res.render('index.html', { htmlInput : data.toString() });
+		else res.render('index.html', { htmlInput : data.toString() });
 	});
 }
 fun();
