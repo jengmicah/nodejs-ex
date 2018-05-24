@@ -92,11 +92,11 @@ app.get('/pagecount', function (req, res) {
   }
 });
 
-const { exec } = require('child_process');
+const exec = require('child_process').exec;
 
 app.get('/exec', function (req, res) {
 	var result = '';
-	exec('magic_test', (err, stdout, stdee) => {
+	const child = exec('./magic_test', (err, stdout, stderr) => {
 		if (err) res.send('{ dataOutput: ERROR }');
 		else res.send('{ dataOutput: ' + stdout + '}');
 		console.log('stdout: ${stdout}');
