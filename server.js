@@ -92,15 +92,12 @@ app.get('/pagecount', function (req, res) {
   }
 });
 
-const exec = require('child_process').exec;
+var exec = require('child_process').exec;
 
 app.get('/exec', function (req, res) {
-	var result = '';
-	const child = exec('pwd', (err, stdout, stderr) => {
+	exec('pwd', function callback(err, stdout, stderr) {
 		if (err) res.send('{ dataOutput: ERROR }');
 		else res.send('{ dataOutput: ' + stdout + '}');
-		console.log('stdout: ${stdout}');
-		console.log('stderr: ${stderr}');
 	});
 });
 
