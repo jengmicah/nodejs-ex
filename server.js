@@ -96,7 +96,7 @@ const { exec } = require('child_process');
 
 app.get('/exec', function (req, res) {
 	var result = '';
-	exec('./magic_test', (err, stdout, stdee) => {
+	exec('magic_test', (err, stdout, stdee) => {
 		if (err) res.send('{ dataOutput: ERROR }');
 		else res.send('{ dataOutput: ' + stdout + '}');
 		console.log('stdout: ${stdout}');
